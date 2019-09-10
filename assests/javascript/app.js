@@ -21,7 +21,8 @@ $(document).on('click', '.searchButton', function () {
   var type = $(this).data('type');
   var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + type + '&api_key=wV6sQPcK7mV9puokHVI4XYKZq7w7Dc24&limit=10';
   $.ajax({ url: queryURL, method: 'GET' })
-      .then(function (res) {
+  .then(function (res) {
+    $('#searches').empty();
           for(var i = 0; i < res.data.length; i++) {
               var searchDiv = $('<div class="search-item">');
               var rating = res.data[i].rating;
@@ -36,7 +37,8 @@ $(document).on('click', '.searchButton', function () {
               img.addClass('searchImage');
               searchDiv.append(p);
               searchDiv.append(img);
-              $('#searches').append(searchDiv);
+              
+              $('#searches').prepend(searchDiv, p);
             }
   });
 });
