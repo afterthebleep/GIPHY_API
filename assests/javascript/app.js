@@ -42,6 +42,12 @@ $(document).on('click', '.searchButton', function () {
             }
   });
 });
+    $('#add-search-btn').on('click', function() {
+      var newSearch = $('#user-input').val();
+      searchArr.push(newSearch);
+      addButtons(searchArr, 'searchButton', '#btn-container');
+      return false;
+    });
 
 
 
